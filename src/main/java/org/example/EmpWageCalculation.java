@@ -1,9 +1,16 @@
 package org.example;
 
+/**
+ * EmpWageCalculation computes wage of employee
+ * checks attendance using random and evaluates wage by
+ * multiplying Hrs worked(from attendance) and WAGE_PER_HR
+ */
 public class EmpWageCalculation
 {
+    // constants
     final static int EMP_PRESENT=1,PART_TIME=2;
     final static int WAGE_PER_HR=20,FULL_DAY=8,PART_TIME_HR=4,ABSENTEE_WAGE=0;
+    //variables
     static int empAttendance,salary;
     public static void main( String[] args )
     {
