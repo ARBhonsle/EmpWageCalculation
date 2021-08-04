@@ -5,6 +5,7 @@ package org.example;
  * checks attendance using random and evaluates wage by
  * multiplying Hrs worked(from attendance) and WAGE_PER_HR
  * and monthly wage by repeating for working days of a month
+ * or until no of total working hours reached for a month
  */
 public class EmpWageCalculation
 {
