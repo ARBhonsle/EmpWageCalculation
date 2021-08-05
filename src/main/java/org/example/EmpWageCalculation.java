@@ -11,15 +11,15 @@ public class EmpWageCalculation
 {
     // constants
     final static int EMP_PRESENT=1,PART_TIME=2;
-    final static int WAGE_PER_HR=20,FULL_DAY=8,PART_TIME_HR=4,ABSENTEE_WAGE=0;
+    final static int WAGE_PER_HR=20,FULL_DAY=8,PART_TIME_HR=4;
     final static int WORKING_DAYS=20,WORKING_HRS_TOTAL=100;
-    //variables
-    static int empAttendance,salary,monthlySalary,day,hrs;
+
     public static void main( String[] args )
     {
+        //variables
+        int empAttendance,salary,monthlySalary=0,day=0,hrs=0;
         System.out.println( "Welcome to Employee Wage Calculation!" );
-        monthlySalary=0;hrs=0;
-        for(day=0;day<WORKING_DAYS && hrs<WORKING_HRS_TOTAL;day++){
+        while(day++ <WORKING_DAYS && hrs<WORKING_HRS_TOTAL){
             empAttendance = (int) Math.floor(Math.random() * 10) % 3;
             switch (empAttendance){
                 case EMP_PRESENT:
@@ -37,7 +37,7 @@ public class EmpWageCalculation
                 default:
                     System.out.println("Employee is absent");
                     System.out.println("Hours: "+0);
-                    salary=ABSENTEE_WAGE;
+                    salary=0;
                     break;
             }
             monthlySalary+=salary;
