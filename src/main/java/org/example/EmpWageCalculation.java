@@ -14,8 +14,7 @@ public class EmpWageCalculation
     final static int WAGE_PER_HR=20,FULL_DAY=8,PART_TIME_HR=4;
     final static int WORKING_DAYS=20,WORKING_HRS_TOTAL=100;
 
-    public static void main( String[] args )
-    {
+    static void computeEmployeeWage(){
         //variables
         int empAttendance,salary,monthlySalary=0,day=0,hrs=0;
         System.out.println( "Welcome to Employee Wage Calculation!" );
@@ -45,6 +44,11 @@ public class EmpWageCalculation
         }
         System.out.println("Monthly Wage: "+monthlySalary);
         System.out.println("Working hrs: "+hrs);
+    }
+
+    public static void main( String[] args )
+    {
+        computeEmployeeWage();
     }
 }
 
