@@ -46,7 +46,7 @@ public class EmpWageCalculation
         System.out.println("Working hrs: "+hrs);
     }
 
-    public static void main( String[] args )
+    public static void main( String[] args)
     {
         computeEmployeeWage();
     }
