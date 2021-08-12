@@ -6,18 +6,27 @@ package org.example;
  * multiplying Hrs worked(from attendance) and WAGE_PER_HR
  * and monthly wage by repeating for working days of a month
  * or until no of total working hours reached for a month
+ * saves wage
  */
 public class EmpWageCalculation
 {
     // constants
     final static int EMP_PRESENT=1,PART_TIME=2;
     final static int FULL_DAY=8,PART_TIME_HR=4;
+    final int WORKING_DAYS,WORKING_HRS_TOTAL,WAGE_PER_HR;
+    final String COMPANY_NAME;
 
-    static void computeEmployeeWage(String companyName,int workingDays,int workingHrsPerMonth, int wagePerHr){
+    public EmpWageCalculation(String companyName, int workingDays, int working_hrs_total, int wagePerHr){
+        this.COMPANY_NAME = companyName;
+        this.WORKING_DAYS = workingDays;
+        this.WORKING_HRS_TOTAL = working_hrs_total;
+        this.WAGE_PER_HR = wagePerHr;
+    }
+
+    void computeEmployeeWage(){
         //variables
-        final int WORKING_DAYS=workingDays,WORKING_HRS_TOTAL=workingHrsPerMonth,WAGE_PER_HR=wagePerHr;
         int empAttendance,salary,monthlySalary=0,day=0,hrs=0;
-        System.out.println("Company: "+companyName);
+        System.out.println("Company: "+COMPANY_NAME);
         while(day++ <WORKING_DAYS && hrs<WORKING_HRS_TOTAL){
             empAttendance = (int) Math.floor(Math.random() * 10) % 3;
             switch (empAttendance){
@@ -42,8 +51,10 @@ public class EmpWageCalculation
             monthlySalary+=salary;
             System.out.println("Wage: "+salary);
         }
-        System.out.println("Monthly Wage: "+monthlySalary);
+
+        System.out.println("Monthly Wage: "+monthlySalary);//total wage given by company
         System.out.println("Working hrs: "+hrs);
+        System.out.println("Wage given by company: "+monthlySalary);
         System.out.println();
     }
 
@@ -51,8 +62,10 @@ public class EmpWageCalculation
     {
         System.out.println( "Welcome to Employee Wage Calculation!" );
         // for different companies different parameters are passed
-        computeEmployeeWage("DMart",20,100,10);
-        computeEmployeeWage("Reliance",10,40,20);
+        EmpWageCalculation company = new EmpWageCalculation("DMart",20,100,10);
+        company.computeEmployeeWage();
+        EmpWageCalculation company2 = new EmpWageCalculation("Reliance",10,40,20);
+        company2.computeEmployeeWage();
     }
 }
 
