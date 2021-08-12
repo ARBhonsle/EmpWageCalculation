@@ -11,13 +11,13 @@ public class EmpWageCalculation
 {
     // constants
     final static int EMP_PRESENT=1,PART_TIME=2;
-    final static int WAGE_PER_HR=20,FULL_DAY=8,PART_TIME_HR=4;
-    final static int WORKING_DAYS=20,WORKING_HRS_TOTAL=100;
+    final static int FULL_DAY=8,PART_TIME_HR=4;
 
-    static void computeEmployeeWage(){
+    static void computeEmployeeWage(String companyName,int workingDays,int workingHrsPerMonth, int wagePerHr){
         //variables
+        final int WORKING_DAYS=workingDays,WORKING_HRS_TOTAL=workingHrsPerMonth,WAGE_PER_HR=wagePerHr;
         int empAttendance,salary,monthlySalary=0,day=0,hrs=0;
-        System.out.println( "Welcome to Employee Wage Calculation!" );
+        System.out.println("Company: "+companyName);
         while(day++ <WORKING_DAYS && hrs<WORKING_HRS_TOTAL){
             empAttendance = (int) Math.floor(Math.random() * 10) % 3;
             switch (empAttendance){
@@ -44,11 +44,15 @@ public class EmpWageCalculation
         }
         System.out.println("Monthly Wage: "+monthlySalary);
         System.out.println("Working hrs: "+hrs);
+        System.out.println();
     }
 
     public static void main( String[] args)
     {
-        computeEmployeeWage();
+        System.out.println( "Welcome to Employee Wage Calculation!" );
+        // for different companies different parameters are passed
+        computeEmployeeWage("DMart",20,100,10);
+        computeEmployeeWage("Reliance",10,40,20);
     }
 }
 
