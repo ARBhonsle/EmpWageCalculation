@@ -10,7 +10,7 @@ import java.util.Scanner;
  * or until no of total working hours reached for a month
  * saves wage, compute for multiple companies using classes and OOPs Concepts
  */
-public class EmpWageCalculation
+public class EmpWageCalculation implements IEmpWageCalc
 {
     // constants
     final static int EMP_PRESENT=1,PART_TIME=2;
@@ -79,8 +79,9 @@ public class EmpWageCalculation
     public static void main( String[] args)
     {
         System.out.println( "Welcome to Employee Wage Calculation!" );
-        // for different companies different parameters are passed
+        // object created
         EmpWageCalculation company = new EmpWageCalculation(2);// since two company params passed
+        // for different companies different parameters are passed
         company.addCompany("DMart",20,100,20);
         company.addCompany("Reliance",30,120,30);
         company.computeEmpWage();
