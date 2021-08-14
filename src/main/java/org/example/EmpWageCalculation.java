@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -8,36 +9,28 @@ import java.util.Scanner;
  * multiplying Hrs worked(from attendance) and WAGE_PER_HR
  * and monthly wage by repeating for working days of a month
  * or until no of total working hours reached for a month
- * saves wage, compute for multiple companies using classes and OOPs Concepts
+ * saves wage, compute for multiple companies using classes and OOPs Concepts and ArrayList
  */
 public class EmpWageCalculation implements IEmpWageCalc
 {
     // constants
     final static int EMP_PRESENT=1,PART_TIME=2;
     final static int FULL_DAY=8,PART_TIME_HR=4;
-    //variables
-    private int numberOfCompany=0;
     // for multiple companies
-    private CompanyEmpWage[] companyEmpWageArray;
+    private ArrayList<CompanyEmpWage> companyEmpWageArray =new ArrayList<>();
 
-    public EmpWageCalculation(int number){
-        if(number>0){
-            companyEmpWageArray=new CompanyEmpWage[number];
-        }
-        else{
-            System.out.println("Incorrect Input");
-        }
-    }
+
     // add company details
     public void addCompany(String companyName, int workingDays, int working_hrs_total, int wagePerHr){
-        companyEmpWageArray[numberOfCompany]=new CompanyEmpWage(companyName,wagePerHr,working_hrs_total,workingDays);
-        numberOfCompany++;
+        CompanyEmpWage companyEmpWage=new CompanyEmpWage(companyName,wagePerHr,working_hrs_total,workingDays);
+        companyEmpWageArray.add(companyEmpWage);
     }
     // computes employee wage for all companies
     public void computeEmpWage(){
-        for(int i=0;i<numberOfCompany;i++){
-            companyEmpWageArray[i].setTotalWage(this.computeEmployeeWage(companyEmpWageArray[i]));
-            System.out.println(companyEmpWageArray[i]);
+        for(int i=0;i<companyEmpWageArray.size();i++){
+            CompanyEmpWage companyEmpWage=companyEmpWageArray.get(i);
+            companyEmpWage.setTotalWage(this.computeEmployeeWage(companyEmpWage));
+            System.out.println(companyEmpWage);
         }
     }
     // compute employee wage for given company
@@ -80,7 +73,7 @@ public class EmpWageCalculation implements IEmpWageCalc
     {
         System.out.println( "Welcome to Employee Wage Calculation!" );
         // object created
-        EmpWageCalculation company = new EmpWageCalculation(2);// since two company params passed
+        EmpWageCalculation company = new EmpWageCalculation();// since two company params passed
         // for different companies different parameters are passed
         company.addCompany("DMart",20,100,20);
         company.addCompany("Reliance",30,120,30);
