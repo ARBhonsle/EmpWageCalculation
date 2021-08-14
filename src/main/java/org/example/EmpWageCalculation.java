@@ -10,29 +10,14 @@ import java.util.Scanner;
  * or until no of total working hours reached for a month
  * saves wage, compute for multiple companies using classes and OOPs Concepts
  */
-class CompanyEmpWage{
-    public final String COMPANY_NAME;
-    public final int WAGE_PER_HR,WORKING_DAYS_TOTAL,WORKING_HRS_TOTAL;
-    public int totalWage;
-    public CompanyEmpWage(String company,int empRatePerHour,int numOfWorkingHrs,int workingDaysPerMonth){
-        this.COMPANY_NAME=company;
-        this.WAGE_PER_HR=empRatePerHour;
-        this.WORKING_HRS_TOTAL=numOfWorkingHrs;
-        this.WORKING_DAYS_TOTAL=workingDaysPerMonth;
-    }
-    public void setTotalWage(int totalWage){
-        this.totalWage=totalWage;
-    }
-    public String printResult(){
-        return "Total Employee wage for Company: "+COMPANY_NAME+" is = "+totalWage;
-    }
-}
 public class EmpWageCalculation
 {
     // constants
     final static int EMP_PRESENT=1,PART_TIME=2;
     final static int FULL_DAY=8,PART_TIME_HR=4;
+    //variables
     private int numberOfCompany=0;
+    // for multiple companies
     private CompanyEmpWage[] companyEmpWageArray;
 
     public EmpWageCalculation(int number){
@@ -43,19 +28,19 @@ public class EmpWageCalculation
             System.out.println("Incorrect Input");
         }
     }
-
+    // add company details
     public void addCompany(String companyName, int workingDays, int working_hrs_total, int wagePerHr){
         companyEmpWageArray[numberOfCompany]=new CompanyEmpWage(companyName,wagePerHr,working_hrs_total,workingDays);
         numberOfCompany++;
     }
-
+    // computes employee wage for all companies
     public void computeEmpWage(){
         for(int i=0;i<numberOfCompany;i++){
             companyEmpWageArray[i].setTotalWage(this.computeEmployeeWage(companyEmpWageArray[i]));
             System.out.println(companyEmpWageArray[i]);
         }
     }
-
+    // compute employee wage for given company
     public int computeEmployeeWage(CompanyEmpWage companyEmpWage){
         //variables
         int empAttendance,salary,monthlySalary=0,day=0,hrs=0;
