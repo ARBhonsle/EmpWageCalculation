@@ -30,7 +30,6 @@ public class EmpWageCalculation implements IEmpWageCalc
         for(int i=0;i<companyEmpWageArray.size();i++){
             CompanyEmpWage companyEmpWage=companyEmpWageArray.get(i);
             companyEmpWage.setTotalWage(this.computeEmployeeWage(companyEmpWage));
-            displayDailyWages();
             System.out.println(companyEmpWage);
         }
     }
@@ -63,6 +62,7 @@ public class EmpWageCalculation implements IEmpWageCalc
             monthlySalary+=salary;
             dailyWage.add(salary);
         }
+        displayDailyWages();
         System.out.println("Monthly Wage: "+monthlySalary);//total wage given by company
         System.out.println("Working hrs: "+hrs);
         System.out.println("Wage given by company: "+monthlySalary);
@@ -74,6 +74,7 @@ public class EmpWageCalculation implements IEmpWageCalc
         for(int i=0;i<dailyWage.size();i++){
             System.out.print(dailyWage.get(i)+" ");
         }
+        System.out.println();
     }
     public static void main( String[] args)
     {
