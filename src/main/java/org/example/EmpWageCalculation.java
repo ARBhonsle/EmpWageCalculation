@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * EmpWageCalculation computes wage of employee
@@ -18,6 +17,7 @@ public class EmpWageCalculation implements IEmpWageCalc
     final static int FULL_DAY=8,PART_TIME_HR=4;
     // for multiple companies
     private ArrayList<CompanyEmpWage> companyEmpWageArray =new ArrayList<>();
+    static private ArrayList<Integer> dailyWage=new ArrayList<>();
 
 
     // add company details
@@ -30,6 +30,7 @@ public class EmpWageCalculation implements IEmpWageCalc
         for(int i=0;i<companyEmpWageArray.size();i++){
             CompanyEmpWage companyEmpWage=companyEmpWageArray.get(i);
             companyEmpWage.setTotalWage(this.computeEmployeeWage(companyEmpWage));
+            displayDailyWages();
             System.out.println(companyEmpWage);
         }
     }
@@ -60,7 +61,7 @@ public class EmpWageCalculation implements IEmpWageCalc
                     break;
             }
             monthlySalary+=salary;
-            System.out.println("Wage: "+salary);
+            dailyWage.add(salary);
         }
         System.out.println("Monthly Wage: "+monthlySalary);//total wage given by company
         System.out.println("Working hrs: "+hrs);
@@ -68,7 +69,12 @@ public class EmpWageCalculation implements IEmpWageCalc
         System.out.println();
         return monthlySalary;
     }
-
+    static void displayDailyWages(){
+        System.out.println("Daily wages earned: ");
+        for(int i=0;i<dailyWage.size();i++){
+            System.out.print(dailyWage.get(i)+" ");
+        }
+    }
     public static void main( String[] args)
     {
         System.out.println( "Welcome to Employee Wage Calculation!" );
