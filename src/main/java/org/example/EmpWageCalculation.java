@@ -31,6 +31,7 @@ public class EmpWageCalculation implements IEmpWageCalc
             CompanyEmpWage companyEmpWage=companyEmpWageArray.get(i);
             companyEmpWage.setTotalWage(this.computeEmployeeWage(companyEmpWage));
             System.out.println(companyEmpWage);
+            System.out.println("Total wage: "+companyEmpWage.getTotalWage());
         }
     }
     // compute employee wage for given company
